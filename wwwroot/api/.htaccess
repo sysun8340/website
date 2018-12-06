@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+Header set Access-Control-Allow-Origin *
+RewriteEngine On
+RewriteCond %{HTTP:From-Https} !^on$ [NC]
+RewriteCond %{HTTP_HOST} ^(www.)?xxcode.xyz$ [NC]                # 将abc.com和www.abc.com跳转到https://www.abc.com,防止apache子站继承上级目录.htaccess受影响
+RewriteRule ^(.*)$ https://www.xxcode.xyz/$1 [R=301,L]
+</IfModule>
